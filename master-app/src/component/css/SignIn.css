@@ -1,0 +1,13 @@
+.SignIn {
+    width: 25%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(82, 81, 81, 0.75);
+    border-radius: 5%
+}
+
+.SignInText {
+    color: white;
+}

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import SignIn from './SigIn';
+import '../css/Login.css'
 
 export default class Login extends Component {
     render() {
         return (
-            <div>
-                <p>Petit con</p>
+            <div className="Home">
+                <SignIn/>
             </div>
         );
     }
-}
-
-const style = {
 }
