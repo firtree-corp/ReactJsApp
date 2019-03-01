@@ -1,6 +1,6 @@
 {
   "name": "master-app",
-  "version": "0.1.0",
+  "version": "1.13.0",
   "private": true,
   "main": "public/electron.js",
   "dependencies": {
@@ -8,8 +8,8 @@
     "electron-is-dev": "^1.0.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "serve": "^10.1.2",
-    "react-scripts": "^2.1.5"
+    "react-scripts": "^2.1.5",
+    "serve": "^10.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
