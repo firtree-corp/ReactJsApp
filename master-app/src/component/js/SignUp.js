@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/SignInUp.css'
 
-class SignInInput extends Component {
+class SignUpInput extends Component {
     render() {
         return (
             <div className="inputDiv">
@@ -12,14 +12,15 @@ class SignInInput extends Component {
     }
 }
 
-export default class SignIn extends Component {
+export default class SignUp extends Component {
     render() {
         return (
             <div className="mainBlock">
-                <p className="textTitle">Connexion</p>
+                <p className="textTitle">Inscription</p>
                 <div className="inputBlock">
-                    <SignInInput name="Email ou Nom de compte"/>
-                    <SignInInput name="Mot de Passe"/>
+                    <SignUpInput name="Nom de compte"/>
+                    <SignUpInput name="Email"/>
+                    <SignUpInput name="Mot de Passe"/>
                 </div>
                 <button className="button">Valider</button>
             </div>
