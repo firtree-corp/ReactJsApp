@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import CreateTemplate from "./component/CreateTemplate.js";
-import Login from './component/js/Login.js';
-import './App.css';
 import { MuiThemeProvider } from '@material-ui/core/styles'
+import CreateTemplate from "./component/Template/js/CreateTemplate.js";
+import Login from './component/Login/js/Login.js';
+import './App.css';
 import theme from './theme/Theme'
-import ReactDragList from 'react-drag-list'
-import { Button } from '@material-ui/core';
 
 class App extends Component {
   render() {

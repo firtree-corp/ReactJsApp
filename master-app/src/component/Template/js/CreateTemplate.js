@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { TextField, Checkbox, Dialog, Button, DialogContent, DialogActions, AppBar, Toolbar } from '@material-ui/core';
-import "./CreateTemplate.css";
+import "../css/CreateTemplate.css";
 import DraggableList from 'react-drag-list';
 
 const theme = createMuiTheme({
