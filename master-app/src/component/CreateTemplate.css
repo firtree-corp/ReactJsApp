@@ -1,0 +1,35 @@
+.Item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: space-between;
+}
+.GLItem {
+    margin: 1%;
+    border-radius: 20px;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 1%;
+    background-color: rgba(0,0,0, 0.1);
+}
+.Check {
+    align-content: center;
+    padding-top: 7px;
+    justify-content: center;
+}
+.Type {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    /* justify-content: center; */
+    justify-items: center;
+}
+.ToolBar {
+    display: flex;
+    background-color: rgba(255, 38, 0, 0.644);
+    align-content: space-between;
+    justify-content: space-between;
+
+}
