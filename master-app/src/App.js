@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Login from './component/Login.js';
 import CreateTemplate from "./component/CreateTemplate.js";
+import Login from './component/js/Login.js';
 import './App.css';
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import theme from './theme/Theme'

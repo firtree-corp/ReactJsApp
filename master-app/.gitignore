@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# dist folder with distrib builds
+dist
+
+# npm and yarn dependencies files
+package-lock.json
+yarn.lock
