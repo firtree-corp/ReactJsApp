@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connectUser } from "../../../actions/index"
+import { connect } from 'react-redux';
 import '../css/SignInUp.css'
 
 class SignInInput extends Component {
@@ -12,12 +14,19 @@ class SignInInput extends Component {
     }
 }
 
-export default class SignIn extends Component {
+class SignIn extends Component {
     constructor() {
         super()
         this.state = {ident: "", pwd: ""}
         this.handleIdent = this.handleIdent.bind(this)
         this.handlePwd = this.handlePwd.bind(this)
+    }
+
+    handleConnection = () => {
+        const { connectUser } = this.props;
+        const { ident, pwd } = this.state;
+
+        connectUser(ident, pwd);
     }
 
     handleIdent(ident) {
@@ -34,10 +43,12 @@ export default class SignIn extends Component {
                 <p className="textTitle">Connexion</p>
                 <div className="inputBlock">
                     <SignInInput name="Email ou Nom de compte" type="text" func={this.handleIdent} value={this.state.ident}/>
-                    <SignInInput name="Mot de Passe" type="password" func={this.handlePwd} value={this.state.pwd}/>
+                    <SignInInput name="Mot de passe" type="password" func={this.handlePwd} value={this.state.pwd}/>
                 </div>
-                <button className="button">Valider</button>
+                <button className="button" onClick={this.handleConnection}>Valider</button>
             </div>
         );
     }
 }
+
+export default connect(null, { connectUser })(SignIn)

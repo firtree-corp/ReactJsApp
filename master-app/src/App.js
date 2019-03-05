@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles'
+import { Provider } from 'react-redux'
 import CreateTemplate from "./component/Template/js/CreateTemplate.js";
 import Login from './component/Login/js/Login.js';
-import './App.css';
 import theme from './theme/Theme'
+import Store from './store/Store'
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-        <MuiThemeProvider theme={theme}>
-        <div>
-            <CreateTemplate/>
-        </div>
-        </MuiThemeProvider>
+        <Provider store={Store}>
+            <MuiThemeProvider theme={theme}>
+                <div>
+                    <Login/>
+                </div>
+            </MuiThemeProvider>
+        </Provider>
     );
   }
 }
