@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { TextField, Checkbox, Dialog, Button, DialogContent, DialogActions, AppBar, Toolbar } from '@material-ui/core';
+import { TextField, Checkbox, Dialog, Button, DialogContent, DialogActions, AppBar, Toolbar, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
 import "../css/CreateTemplate.css";
 import DraggableList from 'react-drag-list';
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#FFFFFF",
+            main: "#000000",
         },
         secondary: {
             main: "#00cc66",
@@ -21,6 +21,7 @@ class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showNotes: false,
             obj: this.props.item
         }
     
@@ -84,11 +85,18 @@ class Item extends Component {
                     <Icon>delete</Icon>
                 </IconButton>
                 </div>
+                <Button style={{backgroundColor:"#00000021", textTransform: 'none'}} onClick={() => {this.setState({showNotes: !this.state.showNotes})}}>
+                <Icon>
+                    {(this.state.showNotes && "expand_less") || "expand_more"}
+                </Icon>
+                </Button>
+                {this.state.showNotes &&
                 <TextField multiline style={{width: "100%"}} margin="normal" label="Notes"
                     value={this.state.obj.note}
                     onChange={(value) => this.InputHandle(value, "note")}
                     variant="outlined">
                 </TextField>
+                }
             </div>
         )
     }
@@ -98,14 +106,13 @@ class Type extends Component {
     render() {
         return (
             <DraggableList
-                rowKey="name"
                 handles={false}
                 dataSource={this.props.items}
                 row={(item, idx) => {
                     if (item.type === this.props.type)
                         return (<Item key={idx} idx={idx} ItemDeleter={this.props.ItemDeleter} ItemHandler={this.props.ItemHandler} item={item}/>)
                 }}
-                onChange={(event) => this.props.ItemTabHandler(event)}
+                onUpdate={(event, source) => this.props.ItemTabHandler(source)}
             />
             )
         }
@@ -124,7 +131,7 @@ class MyBar extends Component {
                     >
                 </TextField>
                 <div style={{display:"flex", flexDirection: "row"}}>
-                    <IconButton
+                    <IconButton style={{backgroundColor: "#00000000"}}
                         onClick={() => this.props.HelpFct()}>
                         <Icon>
                             help_outline
@@ -132,7 +139,7 @@ class MyBar extends Component {
                     </IconButton>
                     <MyDialogue icon='delete_forever' onConfirm={() => this.props.DeleteFct()}
                     Message='Vous allez supprimer le modèle définitivement'/>
-                    <IconButton
+                    <IconButton style={{backgroundColor: "#00000000"}}
                         onClick={() => this.props.SaveFct()}>
                         <Icon>
                             save_alt
@@ -160,7 +167,7 @@ class MyDialogue extends Component {
             React.cloneElement(child, {onClick: this.handleClickOpen})
         )
         return (
-            <div>
+            <div style={{marginLeft: '1%', marginRight: '1%'}}>
                 <Dialog
                     disableBackdropClick
                     open={this.state.open}
@@ -170,10 +177,10 @@ class MyDialogue extends Component {
                         {this.props.message || "Voulez-vous continuer ?"}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => this.handleClose()} color="default">
+                    <Button style={{backgroundColor: "#00000000"}} onClick={() => this.handleClose()} color="default">
                         {this.props.cancelMessage || 'Annuler'}
                     </Button>
-                    <Button onClick={() => {
+                    <Button style={{backgroundColor: "#00000000"}} onClick={() => {
                         this.props.onConfirm();
                         this.handleClose();
                     }}
@@ -183,7 +190,7 @@ class MyDialogue extends Component {
                   </DialogActions>
                 </Dialog>
                 {child ||
-                <IconButton onClick={() => this.handleClickOpen()} color="default">
+                <IconButton  style={{backgroundColor: "#FFFFFF00"}} onClick={() => this.handleClickOpen()} color="default">
                     <Icon>{this.props.icon}</Icon>
                 </IconButton>
                 }
@@ -259,7 +266,7 @@ export default class CreateTemplate extends Component {
     }
     ItemTabHandler = (newTab) => {
         this.setState({
-            items: newTab.target.value
+            items: newTab
         })
     }
     TypeAdder = () => {
@@ -318,7 +325,7 @@ export default class CreateTemplate extends Component {
                     })
                 }}>
                 </TextField>
-                <IconButton onClick={this.TypeAdder} color="secondary">
+                <IconButton style={{backgroundColor:"#00000000"}} onClick={this.TypeAdder} color="secondary">
                     <Icon>add</Icon>
                 </IconButton>
             </div>

@@ -28,7 +28,7 @@
 }
 .ToolBar {
     display: flex;
-    background-color: rgba(255, 38, 0, 0.644);
+    background-color:#2196f3;
     align-content: space-between;
     justify-content: space-between;
 
