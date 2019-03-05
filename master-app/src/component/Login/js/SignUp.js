@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { signUser } from "../../../actions/index"
+import { connect } from 'react-redux'
 import '../css/SignInUp.css'
 
 class SignUpInput extends Component {
@@ -12,13 +14,20 @@ class SignUpInput extends Component {
     }
 }
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     constructor() {
         super()
         this.state = {user: "", mail: "", pwd: ""}
         this.handleUser = this.handleUser.bind(this)
         this.handleMail = this.handleMail.bind(this)
         this.handlePwd = this.handlePwd.bind(this)
+    }
+
+    handleInscription = () => {
+        const { signUser } = this.props;
+        const { user, mail, pwd } = this.state;
+
+        signUser(user, mail, pwd);
     }
 
     handleUser(user) {
@@ -40,10 +49,12 @@ export default class SignUp extends Component {
                 <div className="inputBlock">
                     <SignUpInput name="Nom de compte" type="text" func={this.handleUser} value={this.state.user}/>
                     <SignUpInput name="Email" type="email" func={this.handleMail} value={this.state.mail}/>
-                    <SignUpInput name="Mot de Passe" type="password" func={this.handlePwd} value={this.state.pwd}/>
+                    <SignUpInput name="Mot de passe" type="password" func={this.handlePwd} value={this.state.pwd}/>
                 </div>
-                <button className="button">Valider</button>
+                <button className="button" onClick={this.handleInscription}>Valider</button>
             </div>
         );
     }
 }
+
+export default connect(null, { signUser })(SignUp)

@@ -28,3 +28,4 @@ dist
 # npm and yarn dependencies files
 package-lock.json
 yarn.lock
+.api_root.js
